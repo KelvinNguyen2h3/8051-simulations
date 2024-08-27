@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\8LedBlinkRound" 
+PRINT(".\Listings\8LedBlinkRound.m51") RAMSIZE(256) 

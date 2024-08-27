@@ -1,0 +1,44 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              08/26/2024 14:03:26 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          sbit LED_PIN = P0^0;
+   4          
+   5          //datatype of t is unsignedint
+   6          //16bit from 0 to 65535
+   7          //mean max_delay is 65s
+   8          void Delay_ms(unsigned int t){
+   9   1        unsigned int x, y;
+  10   1        for(x=0;x<t;x++){
+  11   2          for(y=0;y<123;y++); //delay 1ms
+  12   2        }
+  13   1      }
+  14          
+  15          void main(){
+  16   1          while(1){
+  17   2            LED_PIN = !LED_PIN;
+  18   2            Delay_ms(500);
+  19   2          }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     43    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
