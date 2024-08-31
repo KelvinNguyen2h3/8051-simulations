@@ -1,0 +1,55 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              08/28/2024 18:12:17 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "..\lib\delay.h"
+   3          
+   4          unsigned char code Font5x7[10][7]=  {{0x0E,0x11,0x13, 0x15, 0x19,0x11,0x0E},    //0
+   5                                              {0x1F, 0x04, 0x04, 0x04, 0x14, 0x0C, 0x04}, //1
+   6                                              {0x1F, 0x08, 0x04, 0x02, 0x01, 0x11, 0x0E}, //2
+   7                                              {0x0E, 0x11, 0x01, 0x06, 0x01, 0x11, 0x0E}, //3
+   8                                              {0x02, 0x1F, 0x12, 0x08, 0x04, 0x02, 0x01}, //4
+   9                                              {0x1E, 0x01, 0x01, 0x01, 0x1E, 0x10, 0x1F}, //5
+  10                                              {0x0E, 0x11, 0x11, 0x1E, 0x10, 0x11, 0x0E}, //6
+  11                                              {0x04, 0x04, 0x04, 0x02, 0x01, 0x01, 0x1F}, //7
+  12                                              {0x0E, 0x11, 0x11, 0x0E, 0x11, 0x11, 0x0E}, //8
+  13                                              {0x0E, 0x01, 0x01, 0X0F, 0x11, 0x11, 0x0E}};//9
+  14          
+  15          void main(){
+  16   1        unsigned char i;
+  17   1        unsigned char cnt;
+  18   1        unsigned char j;
+  19   1        while(1){
+  20   2          for(cnt=0;cnt<10;cnt++){
+  21   3            for(j=0;j<142;j++){
+  22   4              for(i=0;i<7;i++){
+  23   5                P0 = Font5x7[cnt][i];
+  24   5                P3 = 0x01<<i;
+  25   5                delay_ms(1);
+  26   5                P3 = 0x00;
+  27   5              }
+  28   4            } 
+  29   3          }
+  30   2        }
+  31   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     93    ----
+   CONSTANT SIZE    =     70    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

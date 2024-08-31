@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\ledMatrixCounter0to9" 
+PRINT(".\Listings\ledMatrixCounter0to9.m51") RAMSIZE(256) 

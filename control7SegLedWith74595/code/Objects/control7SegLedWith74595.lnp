@@ -1,0 +1,6 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\74595.obj" 
+TO ".\Objects\control7SegLedWith74595" 
+PRINT(".\Listings\control7SegLedWith74595.m51") RAMSIZE(256) 

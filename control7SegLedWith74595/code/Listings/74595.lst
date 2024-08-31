@@ -1,0 +1,42 @@
+C51 COMPILER V9.60.7.0   74595                                                             08/29/2024 15:00:52 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE 74595
+OBJECT MODULE PLACED IN .\Objects\74595.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\lib\74595.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\74595.lst) TABS(2) OBJECT(.\Objects\74595.obj)
+
+line level    source
+
+   1          #include "74595.h"
+   2          #include "port.h"
+   3          #include <REGX52.H>
+   4          //need ds, shcp and stcp pins
+   5          
+   6          void ic74595Out(unsigned char *p, unsigned n){
+   7   1        unsigned char i, b, j;
+   8   1        for(j=0;j<n;j++){
+   9   2          b = *(p+n-j-1);
+  10   2          for(i=0;i<8;i++){
+  11   3            ic74595DS = b & (0x80>>i);
+  12   3            ic74595SHCP = 0;
+  13   3            ic74595SHCP = 1;
+  14   3          }
+  15   2        }
+  16   1        ic74595STCP = 0;
+  17   1        ic74595STCP = 1;
+  18   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     99    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
