@@ -1,0 +1,106 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              08/31/2024 20:54:31 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "..\lib\delay.h"
+   3          
+   4          #define lcdData P3
+   5          sbit lcdRS = P2^6;
+   6          sbit lcdEN = P2^7;
+   7          
+   8          void lcdCmd(unsigned char cmd){
+   9   1        lcdRS = 0;
+  10   1        lcdData = cmd;
+  11   1        lcdEN = 0;
+  12   1        lcdEN = 1;
+  13   1        delay_ms(2);
+  14   1      }
+  15          
+  16          void lcdCharCP(char c){
+  17   1        lcdRS = 1;
+  18   1        lcdData = c;
+  19   1        lcdEN = 0;
+  20   1        lcdEN = 1;
+  21   1        delay_ms(2);
+  22   1      }
+  23          
+  24          void lcdOutCP(char *str){
+  25   1        unsigned char i = 0;
+  26   1        while(str[i]!=0){
+  27   2          lcdCharCP(str[i]);
+  28   2          i++;
+  29   2        }
+  30   1      }
+  31          
+  32          void lcdInit(){
+  33   1        lcdCmd(0x38);
+  34   1        delay_ms(5);
+  35   1        lcdCmd(0x38);
+  36   1        delay_ms(1);
+  37   1        lcdCmd(0x38);
+  38   1        
+  39   1        lcdCmd(0x38);
+  40   1        lcdCmd(0x01);
+  41   1        lcdCmd(0x0C);
+  42   1      }
+  43          
+  44          void lcdChar(unsigned char row, unsigned char col, char c){
+  45   1        lcdCmd((row==1?0x80:0xC0) + col - 1);
+  46   1        lcdCharCP(c);
+  47   1      }
+  48          
+  49          void lcdOut(unsigned char row, unsigned char col, char *str){
+  50   1        lcdCmd((row==1?0x80:0xC0) + col - 1);
+  51   1        lcdOutCP(str);
+  52   1      }
+  53          
+  54          void main(){
+C51 COMPILER V9.60.7.0   MAIN                                                              08/31/2024 20:54:31 PAGE 2   
+
+  55   1        //lcdCmd(0x0C);
+  56   1        //lcdOutCP("Hello LCD");
+  57   1        
+  58   1        //delay_ms(50);
+  59   1        //lcdInit();
+  60   1        //lcdOutCP("Line 1");
+  61   1        //lcdCmd(0xC0);
+  62   1        //lcdOutCP("Line 2");
+  63   1        
+  64   1        //lcdInit();
+  65   1        //lcdChar(1,1,'K');
+  66   1        //lcdChar(2,2,'K');
+  67   1        //lcdChar(1,3,'K');
+  68   1        //lcdChar(2,4,'K');
+  69   1        //lcdChar(1,5,'K');
+  70   1        //lcdChar(2,6,'K');
+  71   1        
+  72   1        lcdInit();
+  73   1        lcdOut(1,1,"PLEASE LIKE AND SUBCRIBE");
+  74   1        
+  75   1        while(1){
+  76   2          delay_ms(1000);
+  77   2          lcdCmd(0x18);
+  78   2          //lcdCmd(0x1C);
+  79   2        }
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    193    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
