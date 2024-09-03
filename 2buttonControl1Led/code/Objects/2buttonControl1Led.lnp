@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\delay.obj" 
+TO ".\Objects\2buttonControl1Led" 
+PRINT(".\Listings\2buttonControl1Led.m51") RAMSIZE(256) 
